@@ -1,24 +1,21 @@
-import { useState } from 'react'
-import './App.css'
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { About, Contact, Home, Projects } from "./pages";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-    <h1 className="text-3xl font-bold underline text-red-800">
-      Hello world!
-    </h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-    </>
-  )
-}
+    <main>
+      <Router>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route PATH="/about" element={<About />} />
+          <Route PATH="/projects" element={<Projects />} />
+          <Route PATH="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
+    </main>
+  );
+};
 
-export default App
+export default App;
